@@ -2,7 +2,8 @@
 
 @section('content')
 {{ Form::open(array('url' => './')) }}
-	<div id="first" class="col-md-6 col-lg-5">
+<section class="col-sm-12">
+	<div id="first" class="col-md-6 col-lg-6">
 
 	<div id="campaign" class="panel panel-default">
 		<div class="panel-heading">キャンペーン</div>
@@ -22,13 +23,15 @@
 				</fieldset>
 			</div>
 			<div class="form-group">
-				<label for="campaign_budget" class="col-sm-4 control-label">キャンペーン予算（日額）</label>
-				<div class="col-sm-8">
-					<div class="input-group">
-						<span class="input-group-addon">¥</span>
-						<input type="number" class="form-control" id="campaign_budget" name="campaign_budget" step="100" min="0" placeholder="キャンペーン予算" value="" required="">
+				<fieldset class="form-horizontal">
+					<label for="campaign_budget" class="col-sm-4 control-label">キャンペーン予算（日額）</label>
+					<div class="col-sm-8">
+						<div class="input-group">
+							<span class="input-group-addon">¥</span>
+							<input type="number" class="form-control" id="campaign_budget" name="campaign_budget" step="100" min="0" placeholder="キャンペーン予算" value="" required="">
+						</div>
 					</div>
-				</div>
+				</fieldset>
 			</div>
 		</div>
 	</div><!-- /#campaign -->
@@ -52,7 +55,7 @@
 
 	</div><!-- /#first -->
 
-	<div id="second" class="col-md-6 col-lg-5">
+	<div id="second" class="col-md-6 col-lg-6">
 		<div id="keyword_config" class="panel panel-default">
 			<div class="panel-heading">キーワード設定</div>
 			<table class="table table-bordered">
@@ -134,21 +137,27 @@
 			</table>
 		</div><!-- /#keyword_config -->
 	</div><!-- /#second /.col-md-6 col-lg-5 -->
+</section>
 
+<section class="col-sm-12">
+		<div class="page-header col-md-12 col-lg-12">
+			<h4>広告設定</h4>
+		</div><!-- /.page-header -->
 
-	<div class="col-md-6 col-lg-7">
+	<div id="third" class="col-md-12 col-lg-12">
 		<div class="col-sm-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					広告名
+					広告グループ・キーワード
 				</div>
 				<div class="panel-body">
-					<table class="col-sm-4 table table-striped table-bordered table-hover">
+					<div class="col-sm-4">
+					<table class="table table-striped table-bordered table-hover">
 						<thead>
-							<tr><th>広告名</th></tr>
+							<tr><th>広告タイトル</th></tr>
 						</thead>
 						<tbody>
-							<tr><td></td></tr>
+							<tr><td>{{Form::text('ad_ads_title', '')}}</td></tr>
 							<tr><td></td></tr>
 							<tr><td></td></tr>
 							<tr><td></td></tr>
@@ -157,12 +166,14 @@
 							<tr><td></td></tr>
 						</tbody>
 					</table>
-					<table class="col-sm-4 table table-striped table-bordered table-hover">
+				</div><!-- /.col-sm-4 -->
+					<div class="col-sm-4">
+					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr><th>キーワード</th></tr>
 						</thead>
 						<tbody>
-							<tr><td></td></tr>
+							<tr><td>{{Form::text('keyword', '')}}</td></tr>
 							<tr><td></td></tr>
 							<tr><td></td></tr>
 							<tr><td></td></tr>
@@ -171,12 +182,14 @@
 							<tr><td></td></tr>
 						</tbody>
 					</table>
-					<table class="col-sm-4 table table-striped table-bordered table-hover">
+				</div><!-- /.col-sm-4 -->
+					<div class="col-sm-4">
+					<table class="table table-striped table-bordered table-hover">
 						<thead>
-							<tr><th>エンコードURL</th></tr>
+							<tr><th>リンク先エンコードURL</th></tr>
 						</thead>
 						<tbody>
-							<tr><td></td></tr>
+							<tr><td>{{Form::text('ad_ads_link_url', '')}}</td></tr>
 							<tr><td></td></tr>
 							<tr><td></td></tr>
 							<tr><td></td></tr>
@@ -185,11 +198,108 @@
 							<tr><td></td></tr>
 						</tbody>
 					</table>
+				</div><!-- /.col-sm-4 -->
 				</div><!-- /.panel-body -->
 			</div><!-- /.panel panel-default -->
 		</div><!-- /.col-sm-12 -->
-	</div><!-- /.col-md-6 col-lg-7 -->
+	</div><!-- /#third /.col-md-12 col-lg-11 -->
 
+	<div id="fourth" class="col-md-12 col-lg-12">
+		<div class="col-sm-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					広告追加
+				</div>
+				<div class="panel-body">
+					<fieldset class="form-horizontal ad_ads_field">
+						<div class="form-group">
+							<label class="control-label col-sm-4">広告名</label>
+							<div class="col-sm-8">
+								<div class="input-group"><input class="form-control" type="text" name="ad_ads_name" data-max-input-length="50" data-check-text="yss"><span class="input-group-addon"><span class="count">0</span>/50</span></div><span class="help_nomargin"></span>
+							</div>
+						</div>
+{{--
+						<div class="form-group">
+							<label class="control-label col-sm-4">広告タイトル</label>
+							<div class="col-sm-8">
+								<div class="input-group"><input class="form-control" type="text" name="ad_ads_title" data-max-input-length="15" data-change-insertion="true" data-check-text="yss"><span class="input-group-addon"><span class="count">0</span>/15</span></div><span class="help_nomargin"></span>
+							</div>
+						</div>
+--}}
+						<div class="form-group">
+							<label class="control-label col-sm-4">説明文1</label>
+							<div class="col-sm-8">
+								<div class="input-group"><input class="form-control" type="text" name="ad_ads_note01" data-max-input-length="19" data-change-insertion="true" data-check-text="yss"><span class="input-group-addon"><span class="count">0</span>/19</span></div><span class="help_nomargin"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4">説明文2</label>
+							<div class="col-sm-8">
+								<div class="input-group"><input class="form-control" type="text" name="ad_ads_note02" data-max-input-length="19" data-change-insertion="true" data-check-text="yss"><span class="input-group-addon"><span class="count">0</span>/19</span></div><span class="help_nomargin"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4">表示URL</label>
+							<div class="col-sm-8">
+								<div class="input-group"><input class="form-control" type="text" name="ad_ads_display_url" data-max-input-length="29"><span class="input-group-addon"><span class="count">0</span>/29</span></div><span class="help_nomargin"></span>
+							</div>
+						</div>
+{{--
+						<div class="form-group">
+							<label class="control-label col-sm-4">リンク先URL</label>
+							<div class="col-sm-8">
+								<div class="input-group"><input class="form-control" type="text" name="ad_ads_link_url" data-max-input-length="1024"><span class="input-group-addon"><span class="count">0</span>/1024</span></div><span class="help_nomargin"></span>
+							</div>
+						</div>
+--}}
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-8">
+								<input type="hidden" name="ad_ads_listing_type" value="y">
+								<button class="btn btn-primary" type="button" name="ad_ads_data">広告追加</button>
+							</div>
+						</div>
+					</fieldset>
+					<script>
+						ads_data_list = [];
+					</script>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-sm-4">
+			<div class="panel panel-default ads_pattern">
+				<div class="panel-heading">キーワード自動挿入機能</div>
+				<div class="panel-body">
+					<button class="btn btn-info" type="button" name="insertion_keyword" data-ads_pattern="{KEYWORD:}">キーワード自動挿入 {KEYWORD:}</button>
+				</div>
+			</div>
+			<div class="panel panel-default ads_pattern">
+				<div class="panel-heading">
+					<div class="form-inline">
+						広告文補助機能
+						<select id="ads_pattern_select_menu" class="form-control"><option values="数字">数字</option><option values="疑問文">疑問文</option><option values="感嘆符（！、？）">感嘆符（！、？）</option><option values="擬声語">擬声語</option><option values="ボリューム感">ボリューム感</option><option values="焦燥感">焦燥感</option>
+							<option values="緊張感">緊張感</option><option values="信頼感">信頼感</option><option values="割安感">割安感</option><option values="クオリティー">クオリティー</option><option values="斬新性">斬新性</option><option values="利便性">利便性</option><option values="専門性">専門性</option>
+							<option values="希少性">希少性</option><option values="心地良さ">心地良さ</option><option values="命令形で">命令形で</option><option values="危機感">危機感</option><option values="メソッド">メソッド</option><option values="タイムリー">タイムリー</option><option values="ポジティブ">ポジティブ</option>
+							<option values="ネガティブ">ネガティブ</option><option values="手軽感">手軽感</option><option values="理想形">理想形</option><option values="ランキング">ランキング</option><option values="呼びかけ">呼びかけ</option><option values="時代性">時代性</option><option values="対応策">対応策</option>
+							<option values="弱みを強みに">弱みを強みに</option><option values="メリット">メリット</option><option values="実は">実は</option><option values="共感形">共感形</option><option values="勧誘形">勧誘形</option><option values="敵・味方を作る">敵・味方を作る</option><option values="有名人のセリフ">有名人のセリフ</option>
+							<option values="安心感">安心感</option><option values="クイズ形式">クイズ形式</option><option values="特定する">特定する</option><option values="禁止する">禁止する</option><option values="決意させる">決意させる</option><option values="結論から">結論から</option><option values="怒り">怒り</option>
+							<option values="誇張形">誇張形</option><option values="ニュース">ニュース</option><option values="エピソード">エピソード</option><option values="理由を書く">理由を書く</option><option values="想像させる">想像させる</option><option values="情景">情景</option><option values="統計データ">統計データ</option>
+							<option values="リピート">リピート</option><option values="権威性">権威性</option></select>
+					</div>
+				</div>
+				<div class="panel-body">
+					<ul class="ads_pattern_list">
+						<li><button class="btn btn-info" type="button" data-ads_pattern="９０％が満足！">（例）９０％が満足！</button></li>
+						<li><button class="btn btn-info" type="button" data-ads_pattern="たった５分で！">（例）たった５分で！</button></li>
+						<li><button class="btn btn-info" type="button" data-ads_pattern="なんと１万円！">（例）なんと１万円！</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div><!-- /#fourth -->
+</section>
+
+{{--
 					<fieldset class="form-horizontal ad_ads_field">
 						<div class="form-group row">
 							<label class="control-label col-sm-4">広告名</label>
@@ -234,17 +344,9 @@
 							</div>
 						</div>
 					</fieldset>
-					<script>
-						ads_data_list = [];
-					</script>
-				</div>
-			</div>
-		</div>
+--}}
 
-
-
-
-
+{{--
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				キーワード
@@ -300,103 +402,8 @@
 				</fieldset>
 			</div>
 		</div>
-	</div><!-- /.col-md-6 col-lg-7 -->
+--}}
 
-
-	<div class="page-header">
-		<h4>広告設定</h4>
-	</div><!-- /.page-header -->
-
-
-	<div class="row">
-		<div class="col-sm-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					広告追加
-				</div>
-				<div class="panel-body">
-					<fieldset class="form-horizontal ad_ads_field">
-						<div class="form-group">
-							<label class="control-label col-sm-4">広告名</label>
-							<div class="col-sm-8">
-								<div class="input-group"><input class="form-control" type="text" name="ad_ads_name" data-max-input-length="50" data-check-text="yss"><span class="input-group-addon"><span class="count">0</span>/50</span></div><span class="help_nomargin"></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4">広告タイトル</label>
-							<div class="col-sm-8">
-								<div class="input-group"><input class="form-control" type="text" name="ad_ads_title" data-max-input-length="15" data-change-insertion="true" data-check-text="yss"><span class="input-group-addon"><span class="count">0</span>/15</span></div><span class="help_nomargin"></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4">説明文1</label>
-							<div class="col-sm-8">
-								<div class="input-group"><input class="form-control" type="text" name="ad_ads_note01" data-max-input-length="19" data-change-insertion="true" data-check-text="yss"><span class="input-group-addon"><span class="count">0</span>/19</span></div><span class="help_nomargin"></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4">説明文2</label>
-							<div class="col-sm-8">
-								<div class="input-group"><input class="form-control" type="text" name="ad_ads_note02" data-max-input-length="19" data-change-insertion="true" data-check-text="yss"><span class="input-group-addon"><span class="count">0</span>/19</span></div><span class="help_nomargin"></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4">表示URL</label>
-							<div class="col-sm-8">
-								<div class="input-group"><input class="form-control" type="text" name="ad_ads_display_url" data-max-input-length="29"><span class="input-group-addon"><span class="count">0</span>/29</span></div><span class="help_nomargin"></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4">リンク先URL</label>
-							<div class="col-sm-8">
-								<div class="input-group"><input class="form-control" type="text" name="ad_ads_link_url" data-max-input-length="1024"><span class="input-group-addon"><span class="count">0</span>/1024</span></div><span class="help_nomargin"></span>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-4 col-sm-8">
-								<input type="hidden" name="ad_ads_listing_type" value="y">
-								<button class="btn btn-primary" type="button" name="ad_ads_data">広告追加</button>
-							</div>
-						</div>
-					</fieldset>
-					<script>
-						ads_data_list = [];
-					</script>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-4">
-			<div class="panel panel-default ads_pattern">
-				<div class="panel-heading">キーワード自動挿入機能</div>
-				<div class="panel-body">
-					<button class="btn btn-info" type="button" name="insertion_keyword" data-ads_pattern="{KEYWORD:}">キーワード自動挿入 {KEYWORD:}</button>
-				</div>
-			</div>
-			<div class="panel panel-default ads_pattern">
-				<div class="panel-heading">
-					<div class="form-inline">
-						広告文補助機能
-						<select id="ads_pattern_select_menu" class="form-control"><option values="数字">数字</option><option values="疑問文">疑問文</option><option values="感嘆符（！、？）">感嘆符（！、？）</option><option values="擬声語">擬声語</option><option values="ボリューム感">ボリューム感</option><option values="焦燥感">焦燥感</option>
-							<option values="緊張感">緊張感</option><option values="信頼感">信頼感</option><option values="割安感">割安感</option><option values="クオリティー">クオリティー</option><option values="斬新性">斬新性</option><option values="利便性">利便性</option><option values="専門性">専門性</option>
-							<option values="希少性">希少性</option><option values="心地良さ">心地良さ</option><option values="命令形で">命令形で</option><option values="危機感">危機感</option><option values="メソッド">メソッド</option><option values="タイムリー">タイムリー</option><option values="ポジティブ">ポジティブ</option>
-							<option values="ネガティブ">ネガティブ</option><option values="手軽感">手軽感</option><option values="理想形">理想形</option><option values="ランキング">ランキング</option><option values="呼びかけ">呼びかけ</option><option values="時代性">時代性</option><option values="対応策">対応策</option>
-							<option values="弱みを強みに">弱みを強みに</option><option values="メリット">メリット</option><option values="実は">実は</option><option values="共感形">共感形</option><option values="勧誘形">勧誘形</option><option values="敵・味方を作る">敵・味方を作る</option><option values="有名人のセリフ">有名人のセリフ</option>
-							<option values="安心感">安心感</option><option values="クイズ形式">クイズ形式</option><option values="特定する">特定する</option><option values="禁止する">禁止する</option><option values="決意させる">決意させる</option><option values="結論から">結論から</option><option values="怒り">怒り</option>
-							<option values="誇張形">誇張形</option><option values="ニュース">ニュース</option><option values="エピソード">エピソード</option><option values="理由を書く">理由を書く</option><option values="想像させる">想像させる</option><option values="情景">情景</option><option values="統計データ">統計データ</option>
-							<option values="リピート">リピート</option><option values="権威性">権威性</option></select>
-					</div>
-				</div>
-				<div class="panel-body">
-					<ul class="ads_pattern_list">
-						<li><button class="btn btn-info" type="button" data-ads_pattern="９０％が満足！">（例）９０％が満足！</button></li>
-						<li><button class="btn btn-info" type="button" data-ads_pattern="たった５分で！">（例）たった５分で！</button></li>
-						<li><button class="btn btn-info" type="button" data-ads_pattern="なんと１万円！">（例）なんと１万円！</button></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div><!-- /.row -->
 
 	{{Form::submit('出力', array('class' => 'btn btn-large btn-primary'))}}
 {{Form::close()}}
