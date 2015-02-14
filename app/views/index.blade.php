@@ -167,8 +167,8 @@
 						<thead>
 							<tr><th>キーワード<p class="btn btn-sm btn-primary" data-role="add_btn">+</p></th></tr>
 						</thead>
-						<tbody>
-							<tr><td class="ad_ads_title">{{Form::text('keyword[]', '')}}</td></tr>
+						<tbody class="keywords">
+							<tr data-id="1"><td class="keyword">{{Form::text('keyword[]', '')}}</td></tr>
 						</tbody>
 					</table>
 				</div><!-- /.col-sm-4 -->
@@ -177,8 +177,8 @@
 						<thead>
 							<tr><th>リンク先エンコードURL<p class="btn btn-sm btn-primary" data-role="add_btn">+</p></th></tr>
 						</thead>
-						<tbody>
-							<tr><td class="ad_ads_title">{{Form::text('ad_ads_link_url', '')}}</td></tr>
+						<tbody class="ad_ads_link_urls">
+							<tr data-id="1"><td class="ad_ads_link_url">{{Form::text('ad_ads_link_url', '')}}</td></tr>
 						</tbody>
 					</table>
 				</div><!-- /.col-sm-4 -->
