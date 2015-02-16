@@ -25,7 +25,7 @@ function titleGenerator(word, phrase){
 	for(var i=0; i<b; i++){
 		if(phrase[i].match(/^.*\{\{WORD\}\}.*$/)){
 			for(var j=0; j<a; j++){
-				var title = phrase[i].replace(/\{\{WORD\}\}/g, word[j]);
+				var title = phrase[i].replace(/\{\{WORD\}\}/, word[j]);
 				titles.push(title);
 			}
 		}else{
@@ -48,7 +48,7 @@ $(function(){
 	});
 
 	//function addForm()
-	$('#third #title_generator p.add_btn').on('click', function(){
+	$('p').data('role', 'add_btn').on('click', function(){
 		var tb = $(this).closest('thead').next('tbody');
 		var d_id = tb.children().filter('tr:last').data('id');
 		var class_name = tb.children('tr').find('td').attr('class');
@@ -74,7 +74,7 @@ $(function(){
 	});
 
 	//function generateTitle
-	$('#third #title_generator p#generate').on('click', function(){
+	$('p').data('role', 'generate').on('click', function(){
 		var word = []; var phrase = [];
 		$('input[name^="ad_ads_title_word"]').each(function(){
 			word.push($(this).val());
@@ -87,29 +87,20 @@ $(function(){
 		var ttl = "<tr><td></td><td></td><td></td></tr>";
 console.log(titles);
 		for(i=0; i<titles.length; i++){
-			$('tbody.ad_ads_titles').append('<tr></tr>');
 			var T = $('<input>').attr({
 				type: 'text',
 				name: 'ad_ads_title[]',
 				value: titles[i]
 			});
-			$('tbody.ad_ads_titles tr:last').append(T);
+			T.wrap('<td colspan="3"></td>');
+
 			var N = $('<input>').attr({
 				type: 'hidden',
 				name: 'title_num[]',
-				value: titles[i].length
+				value: titles.length
 			});
-			$('tbody.ad_ads_titles tr:last').append(N);
-
-			T.wrap(function(){
-				return '<td colspan="3"></td>';
-			});
-			N.wrap(function(){
-				return '<td>'+titles[i].length+'</td>';
-			});
-//			$('tbody.ad_ads_titles td').wrapAll('<tr />');
-//			TN.wrap('<tr></tr>').appendTo('tbody.ad_ads_titles');
-//			$('tbody.ad_ads_titles').append(TN);
+			N.wrap('<td></td>');
+			$('tbody.ad_ads_titles').append(T).wrap('<tr></tr>');
 		}
 
 	});
