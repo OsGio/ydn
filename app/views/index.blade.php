@@ -190,7 +190,7 @@
 									<button class="btn btn-primary btn-lg btn-block" type="button" name="crossing_keyword"><i class="fa fa-arrow-circle-down"></i> 変換</button>
 									<input type="hidden" id="campaign">
 									<input type="hidden" id="adGroup">
-									<label><input type="checkbox" id="keywordsAll"> 順序入れ替えあり</label>
+									<!-- <label><input type="checkbox" id="keywordsAll"> 順序入れ替えあり</label> -->
 								</p>
 							</div>
 						</div>
@@ -313,7 +313,7 @@
 
 		<div id="third" class="col-md-12 col-lg-12">
 			<div class="col-sm-12">
-				<div class="panel panel-default">
+				<div id="title_generator" class="panel panel-default">
 					<div class="panel-heading">
 						広告タイトルパターン生成
 					</div>
@@ -323,12 +323,12 @@
 								<table class="table table-striped table-bordered table-hover col-sm-6">
 									<thead>
 										<tr>
-											<th colspan="2">タイトルワード<p class="btn btn-sm btn-primary" data-role="add_btn" data-id="word">+</p></th>
+											<th colspan="2">タイトルワード<p class="btn btn-sm btn-primary add_btn" data-id="word">+</p></th>
 										</tr>
 									</thead>
-									<tbody class="ad_ads_titles">
-										<tr data-id="1">
-											<td class="ad_ads_title">{{Form::text('ad_ads_title_word[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_word_num[]', '0', array('class' => 'title_num'))}}
+									<tbody>
+										<tr>
+											<td class="ad_ads_title_word">{{Form::text('ad_ads_title_word[]', '', array('class' => 'as_ads_title_word'))}}</td><td class="title_word_num"></td>{{Form::hidden('title_word_num[]', '0', array('class' => 'title_word_num'))}}
 										</tr>
 									</tbody>
 								</table>
@@ -337,27 +337,28 @@
 								<table class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th colspan="2">タイトルフレーズ<p class="btn btn-sm btn-primary" data-role="add_btn" data-id="phrase">+</p></th>
+											<th colspan="2">タイトルフレーズ<p class="btn btn-sm btn-primary add_btn" data-id="phrase">+</p></th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td class="ad_ads_title">{{Form::text('ad_ads_title_phrase[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_phrase_num[]', '0', array('class' => 'title_num'))}}
+											<td class="ad_ads_title_phrase">{{Form::text('ad_ads_title_phrase[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_phrase_num"></td>{{Form::hidden('title_phrase_num[]', '0', array('class' => 'title_phrase_num'))}}
 										</tr>
 									</tbody>
 								</table>
 							</div>
 							<div class="col-sm-12 collapse in">
+								<p class="btn btn-sm btn-info" id="generate">広告タイトル生成</p>
 								<table class="table table-striped table-bordered table-hover">
 									<thead>
 										<tr>
-											<th>ワードカウント</tH><th colspan="2">広告タイトル</th><th>文字数</th>
+											<!-- <th>ワードカウント</th><th colspan="2">広告タイトル</th><th>文字数</th> -->
 										</tr>
 									</thead>
 									<tbody class="ad_ads_titles">
-										<tr data-id="1">
-											<td>1</td><td class="ad_ads_title" colspan="2">{{Form::text('ad_ads_title[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_num[]', '0', array('class' => 'title_num'))}}
-										</tr>
+										<!-- <tr> -->
+											<!-- <td class="ad_ads_title" colspan="3">{{Form::text('ad_ads_title[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_num[]', '0', array('class' => 'title_num'))}} -->
+										<!-- </tr> -->
 									</tbody>
 								</table>
 							</div>
