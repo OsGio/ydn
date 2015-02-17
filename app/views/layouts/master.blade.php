@@ -27,7 +27,9 @@
 		</div><!-- /.row -->
 	</div><!-- .container -->
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js?ver=4.0'></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js?ver=4.0'></script>
+<script type='text/javascript' src='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js?ver=4.0'></script>
 {{HTML::script('js/function.js')}}
 </body>
 </html>

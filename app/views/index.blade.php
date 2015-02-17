@@ -60,11 +60,10 @@
 
 <!-- ***** .collapseをremoveClassで表示 ***** -->
 	<section class="col-sm-12">
-		<div id="second" class="col-md-12 col-lg-12">
 			<div class="page-header col-md-12 col-lg-12">
 				<h4>キーワード設定</h4>
-			</div><!-- /.page-header -->
-
+			</div>
+		<div id="second" class="col-md-12 col-lg-12">
 				<div id="keyword_config" class="panel panel-default col-sm-12">
 					<div class="panel-heading">マッチタイプ設定</div>
 					<div class="panel-body">
@@ -209,8 +208,8 @@
 					<fieldset class="form-horizontal col-sm-5">
 						<div class="form-group">
 							<div class="col-sm-12">
-								<textarea id="result" class="form-control" rows="8" name="keyword" required=""></textarea>
-								<span class="help-block">キーワード数：<span class="count">0</span></span>	<span class="btn btn-sm btn-warning">URLエンコード</span>
+								<textarea id="encode" class="form-control" rows="8" name="url_encode" required=""></textarea>
+								<span class="help-block">キーワード数：<span class="count">0</span></span>	<span class="btn btn-sm btn-warning encode_btn" data-role="encode">URLエンコード</span>
 							</div>
 						</div>
 					</fieldset>
@@ -320,32 +319,48 @@
 					</div>
 					<div class="panel-body">
 						<div class="col-sm-12">
-						<table class="table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
-									<th colspan="2">タイトルワード<p class="btn btn-sm btn-primary" data-role="add_btn">+</p></th>
-									<th colspan="2">タイトルフレーズ<p class="btn btn-sm btn-primary" data-role="add_btn">+</p></th>
-								</tr>
-							</thead>
-							<tbody class="ad_ads_titles">
-								<tr data-id="1">
-									<td class="ad_ads_title">{{Form::text('ad_ads_title_word[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_word_num[]', '0', array('class' => 'title_num'))}}
-									<td class="ad_ads_title">{{Form::text('ad_ads_title_phrase[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_phrase_num[]', '0', array('class' => 'title_num'))}}
-								</tr>
-							</tbody>
-						</table>
-						<table class="table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
-									<th>ワードカウント</tH><th colspan="2">広告タイトル</th><th>文字数</th><p class="btn btn-sm btn-primary" data-role="add_btn">+</p>
-								</tr>
-							</thead>
-							<tbody class="ad_ads_titles">
-								<tr data-id="1">
-									<td>1</td><td class="ad_ads_title" colspan="2">{{Form::text('ad_ads_title[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_num[]', '0', array('class' => 'title_num'))}}
-								</tr>
-							</tbody>
-						</table>
+							<div class="col-sm-6">
+								<table class="table table-striped table-bordered table-hover col-sm-6">
+									<thead>
+										<tr>
+											<th colspan="2">タイトルワード<p class="btn btn-sm btn-primary" data-role="add_btn" data-id="word">+</p></th>
+										</tr>
+									</thead>
+									<tbody class="ad_ads_titles">
+										<tr data-id="1">
+											<td class="ad_ads_title">{{Form::text('ad_ads_title_word[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_word_num[]', '0', array('class' => 'title_num'))}}
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="col-sm-6">
+								<table class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th colspan="2">タイトルフレーズ<p class="btn btn-sm btn-primary" data-role="add_btn" data-id="phrase">+</p></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="ad_ads_title">{{Form::text('ad_ads_title_phrase[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_phrase_num[]', '0', array('class' => 'title_num'))}}
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="col-sm-12 collapse in">
+								<table class="table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>ワードカウント</tH><th colspan="2">広告タイトル</th><th>文字数</th>
+										</tr>
+									</thead>
+									<tbody class="ad_ads_titles">
+										<tr data-id="1">
+											<td>1</td><td class="ad_ads_title" colspan="2">{{Form::text('ad_ads_title[]', '', array('class' => 'as_ads_title'))}}</td><td class="title_num"></td>{{Form::hidden('title_num[]', '0', array('class' => 'title_num'))}}
+										</tr>
+									</tbody>
+								</table>
+							</div>
 					</div><!-- /.col-sm-12 -->
 					</div><!-- /.panel-body -->
 				</div><!-- /.panel panel-default -->
