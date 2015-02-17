@@ -12,6 +12,18 @@
 */
 
 //Route::controller('AdAds', 'AdAdsController');
+App::bind('adads', function($app){
+    return new AdAdsController;
+});
+App::bind('adgroup', function($app){
+    return new AdGroupController;
+});
+App::bind('keyword', function($app){
+    return new KeywordController;
+});
+App::bind('campaign', function($app){
+    return new CampaignController;
+});
 
 
 Route::get('/', 'PageController@getIndex');

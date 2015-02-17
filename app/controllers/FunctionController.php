@@ -15,17 +15,41 @@ class FunctionController extends BaseController {
 	|
 	*/
 
-	/**
-	* @param campaign_name キャンペーン名
-	*
+	/** Postデータ
+	* @param ( str )campaign_name キャンペーン名
+	* @param ( str )campaign_budget キャンペーン予算
+	* @param ( str )ad_group_cost 入札価格
+	* @param ( arr )match_type マッチタイプ
+	* @param ( str )cross_keyword01 クロスキーワード01
+	* @param ( str )cross_keyword02 クロスキーワード02
+	* @param ( str )cross_keyword03 クロスキーワード03
+	* @param ( str )keyword クロスキーワード
+	* @param ( str )url_encode エンコードURL
+	* @param ( arr )ad_ads_title_word タイトルワード
+	* @param ( arr )title_word_num ワード文字数
+	* @param ( arr )ad_ads_title_phrase タイトルフレーズ
+	* @param ( str )title_phrase_num フレーズ数
+	* @param ( str )ad_ads_name 広告名
+	* @param ( str )ad_ads_note01 説明文１
+	* @param ( str )ad_ads_note02 説明文２
+	* @param ( str )ad_ads_display_url 表示URL
+	* @param ( str )ad_ads_link_url リンクURL
+	* @param ( str )ad_ads_listing_type リスティングタイプ
 	*/
 	public function postIndex()
 	{
 		$posts = $_POST;
 
-$user = new User;
-var_dump($user);exit;
-$AdAds = new AdAds;
+$Cam = App::make('campaign');
+$err = $Cam->selfCheck();
+
+$Ad = App::make('adgroup');
+$err = $Ad->selfCheck();
+
+
+
+var_dump($Cam->setCampaign($posts));exit;
+
 
 
 		foreach($posts as $key => $val)

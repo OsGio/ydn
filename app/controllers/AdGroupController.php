@@ -1,6 +1,6 @@
 <?php
 
-class AdGroupController extends BaseController {
+class AdGroupController extends CampaignController {
 
     /*
     |--------------------------------------------------------------------------
@@ -48,79 +48,60 @@ class AdGroupController extends BaseController {
 
     private $campaign_name;
     private $ad_group_name;
-    private $component_type;
-    private $send_flg;
-    private $send_status;
-    private $match_type;
-    private $keywords;
-    private $custom_url;
+    private $component_type = '広告グループ';
+    private $send_flg = 'オン';
+    private $send_status = null;
+    private $match_type = null;
+    private $keywords = null;
+    private $custom_url = null;
     private $ad_group_cost;
-    private $ad_ads_name;
-    private $ad_ads_title;
-    private $ad_ads_note01;
-    private $ad_ads_note02;
-    private $display_url;
-    private $link_url;
-    private $campaign_budget;
-    private $start_day;
-    private $device_type;
-    private $send_to;
-    private $sp_budget_ratio;
-    private $ad_ads_type;
-    private $career;
-    private $priority_device;
-    private $campaign_id;
-    private $ad_group_id;
-    private $keywords_id;
-    private $ad_ads_id;
-    private $err_msg;
+    private $ad_ads_name = null;
+    private $ad_ads_title = null;
+    private $ad_ads_note01 = null;
+    private $ad_ads_note02 = null;
+    private $display_url = null;
+    private $link_url = null;
+    private $campaign_budget = null;
+    private $start_day = null;
+    private $device_type = "PC|モバイル|スマートフォン";
+    private $send_to = null;
+    private $sp_budget_ratio = null;
+    private $ad_ads_type = null;
+    private $career = null;
+    private $priority_device = null;
+    private $campaign_id = null;
+    private $ad_group_id = null;
+    private $keywords_id = null;
+    private $ad_ads_id = null;
+    private $err_msg = null;
 
-
-    public function __construct(){
-        $this->campaign_name = $campaign_name;
-        $this->ad_group_name = $ad_group_name;
-        $this->component_type = $component_type;
-        $this->send_flg = 'オン';
-        $this->send_status = null;
-        $this->match_type = null;
-        $this->keywords = null;
-        $this->custom_url = null;
-        $this->ad_group_cost = $ad_group_cost;
-        $this->ad_ads_name = null;
-        $this->ad_ads_title = null;
-        $this->ad_ads_note01 = null;
-        $this->ad_ads_note02 = null;
-        $this->display_url = null;
-        $this->link_url = null;
-        $this->campaign_budget = null;
-        $this->start_day = null;
-        $this->device_type = "PC|モバイル|スマートフォン";
-        $this->send_to = null;
-        $this->sp_budget_ratio = null;
-        $this->ad_ads_type = null;
-        $this->career = null;
-        $this->priority_device = null;
-        $this->campaign_id = null;
-        $this->ad_group_id = null;
-        $this->keywords_id = null;
-        $this->ad_ads_id = null;
-        $this->err_msg = null;
-    }
-
-
-
-
+    private $must = ['campaign_name', 'ad_group_name', 'ad_group_cost'];
 
 
     /**
     * @param campaign_name キャンペーン名
     *
     */
-    public function postIndex()
-    {
 
+    public function __construct(){
+        return $this;
     }
 
+    public function selfCheck(){
+        foreach($this->must as $m)
+        {
+            $validator = Validator::make(
+                array($m => $this->$m),
+                array($m => 'required')
+            );
+
+            if($validator->fails())
+            {
+                $miss[] = $m;
+            }
+        }
+        if($miss)return $miss;
+    }
 
 
 }
