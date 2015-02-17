@@ -1,6 +1,6 @@
 <?php
 
-class CampaignController extends BaseController {
+class AdAdsController extends BaseController {
 
     /*
     |--------------------------------------------------------------------------

@@ -11,6 +11,9 @@
 |
 */
 
+//Route::controller('AdAds', 'AdAdsController');
+
+
 Route::get('/', 'PageController@getIndex');
 Route::post('/', 'FunctionController@postIndex');
 

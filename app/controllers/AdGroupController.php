@@ -1,6 +1,6 @@
 <?php
 
-class KeywordController extends BaseController {
+class AdGroupController extends BaseController {
 
     /*
     |--------------------------------------------------------------------------

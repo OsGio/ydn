@@ -23,6 +23,11 @@ class FunctionController extends BaseController {
 	{
 		$posts = $_POST;
 
+$user = new User;
+var_dump($user);exit;
+$AdAds = new AdAds;
+
+
 		foreach($posts as $key => $val)
 		{
 			if($val==""){ $posts[$key] = null; }
