@@ -42,13 +42,13 @@ class FunctionController extends BaseController {
 
 $Cam = App::make('campaign');
 $err = $Cam->selfCheck();
+var_dump($err);exit;
 
 $Ad = App::make('adgroup');
 $err = $Ad->selfCheck();
 
 
 
-var_dump($Cam->setCampaign($posts));exit;
 
 
 
