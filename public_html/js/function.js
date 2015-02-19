@@ -86,6 +86,9 @@ $(function(){
 		var titles = titleGenerator(word, phrase);
 		var ttl = "<tr><td></td><td></td><td></td></tr>";
 console.log(titles);
+		$('tbody.ad_ads_titles span.ad_ads_title_count').text(titles.length);
+		$('tbody.ad_ads_titles input[name="ad_ads_title_count"]').val(titles.length);
+		
 		for(i=0; i<titles.length; i++){
 			$('tbody.ad_ads_titles').append('<tr></tr>');
 			var T = $('<input>').attr({
@@ -114,7 +117,6 @@ console.log(titles);
 
 	});
 
-
 	//function corossKeyword
 	$('button[name="crossing_keyword"]').on('click', function(){
 		var k1 = toArray($('#keys1').val());
@@ -126,6 +128,7 @@ console.log(titles);
 
 		var keywords = crossKeywords(k1, k2, k3);
 		$('#result+span>span').text(keywords.length);
+		$('#result+span>input[name="keyword_count"]').val(keywords.length);
 		keywords = keywords.join();
 		keywords = keywords.replace(/\,/g, '\n');
 		$('#result').val(keywords);
